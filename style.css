@@ -1,1 +1,708 @@
 
+/* =========================================
+   🌸 ANIVERSÁRIO DA SOPHIA - 4 ANINHOS 🌸
+   Tema: Castelo encantado e fundo do mar
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+
+:root {
+    --rosa: #ff80b5;
+    --rosa-claro: #ffd6e8;
+    --rosa-forte: #ed4d98;
+    --lilas: #b99aff;
+    --azul: #75d9f5;
+    --azul-escuro: #247eae;
+    --dourado: #ffdc78;
+    --branco: #ffffff;
+    --texto: #70476f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Baloo 2', cursive;
+    color: var(--texto);
+    background: linear-gradient(
+        180deg,
+        #ffe4f0,
+        #e8dfff,
+        #d9f5ff
+    );
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================
+   ELEMENTOS DECORATIVOS
+========================================= */
+
+.star,
+.bubble {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    color: white;
+    font-size: 22px;
+    animation: brilho 2s infinite alternate;
+}
+
+@keyframes brilho {
+    from {
+        opacity: 0.35;
+        transform: scale(0.7) rotate(0deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.2) rotate(25deg);
+    }
+}
+
+.bubble {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 50%;
+    animation: subirBolha 8s linear infinite;
+}
+
+@keyframes subirBolha {
+    from {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateY(-20vh);
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   TELAS E SEÇÕES
+========================================= */
+
+.scene {
+    position: relative;
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    padding: 40px 20px;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.scene.active {
+    display: flex;
+    animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scene-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* =========================================
+   TÍTULOS E TEXTOS
+========================================= */
+
+h1,
+h2,
+h3 {
+    font-family: 'Fredoka', cursive;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    color: var(--rosa-forte);
+    text-shadow: 3px 4px 0 white,
+                 0 0 20px rgba(255,255,255,0.8);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #a45bc7;
+    margin-bottom: 18px;
+}
+
+h3 {
+    font-size: 1.7rem;
+    color: var(--rosa-forte);
+    margin-bottom: 12px;
+}
+
+p {
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.highlight {
+    color: var(--rosa-forte);
+    font-weight: 800;
+}
+
+/* =========================================
+   BOTÕES MÁGICOS
+========================================= */
+
+.magic-button,
+.next-button,
+.gift-button {
+    display: inline-block;
+    position: relative;
+    padding: 14px 30px;
+    margin: 12px 6px;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff80b5, #bd83f5);
+    box-shadow: 0 7px 0 #b64e9a,
+                0 12px 25px rgba(176, 85, 160, 0.25);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.magic-button:hover,
+.next-button:hover,
+.gift-button:hover {
+    transform: translateY(-5px) scale(1.04);
+    box-shadow: 0 10px 0 #b64e9a,
+                0 18px 30px rgba(176, 85, 160, 0.3);
+}
+
+.magic-button:active,
+.next-button:active,
+.gift-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #b64e9a;
+}
+
+/* =========================================
+   1. CASTELO ENCANTADO
+========================================= */
+
+#castle {
+    background:
+        linear-gradient(
+            rgba(255, 220, 239, 0.25),
+            rgba(225, 205, 255, 0.55)
+        ),
+        url("imagens/castelo-rosa.jpeg") center/cover no-repeat;
+}
+
+#castle::before {
+    content: "✨";
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-size: 3rem;
+    animation: flutuar 3s infinite ease-in-out;
+}
+
+#castle::after {
+    content: "🌸";
+    position: absolute;
+    bottom: 12%;
+    right: 10%;
+    font-size: 3rem;
+    animation: flutuar 4s infinite ease-in-out;
+}
+
+.castle-image {
+    width: min(80%, 450px);
+    max-height: 350px;
+    object-fit: contain;
+    margin: 15px auto 25px;
+    filter: drop-shadow(0 15px 15px rgba(116, 65, 130, 0.25));
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+/* =========================================
+   2. MOMENTO COM A MAMÃE
+========================================= */
+
+#mom {
+    background: linear-gradient(
+        145deg,
+        #ffe1ef,
+        #f4dfff,
+        #fff0f6
+    );
+}
+
+.photo-frame {
+    width: min(85%, 420px);
+    margin: 25px auto;
+    padding: 12px;
+    background: white;
+    border: 5px solid #ffc0dc;
+    border-radius: 28px;
+    box-shadow: 0 15px 35px rgba(177, 99, 157, 0.25);
+    transform: rotate(-2deg);
+    transition: transform 0.4s;
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+
+.photo-frame img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.love-message {
+    max-width: 750px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.65);
+    box-shadow: 0 8px 25px rgba(180, 110, 170, 0.12);
+}
+
+/* =========================================
+   3. REINO DAS SEREIAS
+========================================= */
+
+#mermaid {
+    color: white;
+    background: linear-gradient(
+        180deg,
+        #69d9ed,
+        #3aadd7,
+        #376fc2,
+        #55449f
+    );
+}
+
+#mermaid h1,
+#mermaid h2,
+#mermaid h3 {
+    color: white;
+    text-shadow: 2px 3px 0 rgba(40, 75, 150, 0.3);
+}
+
+#mermaid p {
+    color: #ffffff;
+    text-shadow: 1px 2px 3px rgba(0, 50, 100, 0.25);
+}
+
+.mermaid-image {
+    width: min(85%, 420px);
+    max-height: 420px;
+    object-fit: cover;
+    margin: 25px auto;
+    border: 7px solid rgba(255,255,255,0.8);
+    border-radius: 35px;
+    box-shadow: 0 15px 40px rgba(0, 40, 100, 0.25);
+    animation: flutuar 4s infinite ease-in-out;
+}
+
+.shell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 85px;
+    margin: 12px;
+    border-radius: 50%;
+    font-size: 2.8rem;
+    background: linear-gradient(145deg, #fff4fc, #f6b8e2);
+    box-shadow: 0 7px 0 #d184c4,
+                0 10px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+}
+
+.shell:hover {
+    transform: translateY(-8px) rotate(12deg) scale(1.1);
+}
+
+.shell:active {
+    transform: scale(0.9);
+}
+
+.secret-message {
+    display: none;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    color: #65417c;
+    background: white;
+    border: 3px solid #f9b9e4;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* =========================================
+   4. JOGO DOS BALÕES
+========================================= */
+
+#balloon-game {
+    background: linear-gradient(
+        180deg,
+        #ffe3f0,
+        #e9dcff,
+        #d8f5ff
+    );
+}
+
+.balloon-instruction {
+    max-width: 700px;
+    margin: 10px auto 30px;
+}
+
+.balloons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 750px;
+    margin: 25px auto;
+}
+
+.balloon {
+    position: relative;
+    width: 85px;
+    height: 110px;
+    border-radius: 50% 50% 45% 45%;
+    color: white;
+    font-family: 'Fredoka', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+    box-shadow: inset -10px -10px 15px rgba(0,0,0,0.12),
+                inset 8px 8px 15px rgba(255,255,255,0.4),
+                0 8px 15px rgba(0,0,0,0.12);
+    animation: balanco 2.5s infinite ease-in-out;
+    transition: transform 0.25s, opacity 0.25s;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    width: 2px;
+    height: 25px;
+    background: rgba(100, 80, 120, 0.45);
+}
+
+.balloon:nth-child(1) {
+    background: linear-gradient(135deg, #ff83b7, #ed4b8c);
+}
+
+.balloon:nth-child(2) {
+    background: linear-gradient(135deg, #9a8bff, #6856d8);
+    animation-delay: 0.3s;
+}
+
+.balloon:nth-child(3) {
+    background: linear-gradient(135deg, #66d8f4, #2c9ed4);
+    animation-delay: 0.6s;
+}
+
+.balloon:nth-child(4) {
+    background: linear-gradient(135deg, #ffd879, #f6a93e);
+    animation-delay: 0.9s;
+}
+
+.balloon:nth-child(5) {
+    background: linear-gradient(135deg, #ff9c83, #f16b68);
+    animation-delay: 1.2s;
+}
+
+.balloon:nth-child(6) {
+    background: linear-gradient(135deg, #a9e88a, #59bd80);
+    animation-delay: 1.5s;
+}
+
+@keyframes balanco {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(3deg);
+    }
+}
+
+.balloon:hover {
+    transform: scale(1.12);
+    cursor: pointer;
+}
+
+.balloon.popped {
+    animation: estourar 0.35s forwards;
+    pointer-events: none;
+}
+
+@keyframes estourar {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.progress-message {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #a14aab;
+    margin: 20px 0;
+}
+
+/* =========================================
+   5. PRESENTE E VÍDEO FINAL
+========================================= */
+
+#final {
+    background: linear-gradient(
+        145deg,
+        #ffe1ef,
+        #e4d8ff,
+        #d5f5ff
+    );
+}
+
+.gift-button {
+    padding: 20px 35px;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #ffd36d, #ff91b8);
+    box-shadow: 0 8px 0 #d98c69,
+                0 15px 30px rgba(170, 100, 100, 0.2);
+}
+
+.video-container {
+    width: min(95%, 850px);
+    margin: 25px auto;
+    padding: 12px;
+    background: white;
+    border: 5px solid #ffc0df;
+    border-radius: 28px;
+    box-shadow: 0 15px 40px rgba(150, 90, 150, 0.2);
+}
+
+.video-container video {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    border-radius: 17px;
+    background: #222;
+}
+
+.final-message {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.72);
+    box-shadow: 0 8px 25px rgba(160, 100, 170, 0.12);
+}
+
+.final-message p {
+    color: #86518e;
+    font-weight: 600;
+}
+
+/* =========================================
+   FOGOS DE ARTIFÍCIO
+========================================= */
+
+.firework {
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: fogos 0.9s ease-out forwards;
+}
+
+@keyframes fogos {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+        box-shadow: 0 0 0 0 #ff80b5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+        box-shadow:
+            30px 0 #ff80b5,
+            -30px 0 #ffd76d,
+            0 30px #8be4ff,
+            0 -30px #b99aff,
+            22px 22px #ff9b9b,
+            -22px -22px #a7ed9c,
+            22px -22px #ffffff,
+            -22px 22px #ffe28b;
+    }
+}
+
+/* =========================================
+   CONTROLE DE SOM
+========================================= */
+
+.sound-button {
+    position: fixed;
+    z-index: 20;
+    top: 15px;
+    right: 15px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #ff80b5, #9b83ed);
+    box-shadow: 0 5px 15px rgba(100, 60, 120, 0.25);
+    transition: transform 0.3s;
+}
+
+.sound-button:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* =========================================
+   RESPONSIVIDADE - CELULAR E TABLET
+========================================= */
+
+@media (max-width: 600px) {
+    .scene {
+        padding: 75px 15px 35px;
+    }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    .castle-image,
+    .mermaid-image {
+        max-height: 300px;
+    }
+
+    .balloons-container {
+        gap: 14px;
+    }
+
+    .balloon {
+        width: 70px;
+        height: 92px;
+        font-size: 1.5rem;
+    }
+
+    .shell {
+        width: 68px;
+        height: 68px;
+        font-size: 2.2rem;
+        margin: 8px;
+    }
+
+    .magic-button,
+    .next-button {
+        padding: 12px 22px;
+        font-size: 1.05rem;
+    }
+
+    .photo-frame {
+        width: 92%;
+    }
+
+    .video-container {
+        padding: 7px;
+    }
+
+    .sound-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
