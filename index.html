@@ -1,26 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#073568">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8c9df">
 <title>O Reino Encantado da Sophia 💗</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
 
 :root {
-  --navy: #061b3b;
-  --blue: #087eae;
-  --aqua: #5ee7e1;
-  --pink: #ff8fc7;
-  --gold: #ffe2a1;
-  --white: #fffafc;
+  --pink: #f5b8d3;
+  --pink-light: #fff0f6;
+  --pink-dark: #bd5488;
+  --purple: #a58acb;
+  --text: #70445f;
+  --gold: #e7bd70;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -28,599 +30,584 @@ html {
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  color: var(--white);
-  font-family: 'DM Sans', sans-serif;
-  background: #041a3b;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  background: #fff5f9;
   overflow-x: hidden;
 }
 
-button {
-  font: inherit;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
 }
 
-.scene {
-  display: none;
-  min-height: 100svh;
+section {
   position: relative;
   overflow: hidden;
-  padding: 35px 18px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  padding: 95px 7%;
+}
+
+.section-title {
   text-align: center;
-  isolation: isolate;
-}
-
-.scene.active {
-  display: flex;
-  animation: fade .8s ease;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* ESTRELAS */
-
-.stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background-image:
-    radial-gradient(2px 2px at 20% 20%, #fff 99%, transparent),
-    radial-gradient(2px 2px at 80% 30%, #fff 99%, transparent),
-    radial-gradient(1.5px 1.5px at 65% 12%, #fff 99%, transparent),
-    radial-gradient(2px 2px at 35% 55%, #fff 99%, transparent);
-  background-size: 260px 220px;
-  animation: twinkle 4s infinite alternate;
-}
-
-@keyframes twinkle {
-  from { opacity: .4; }
-  to { opacity: 1; }
-}
-
-/* TEXTOS */
-
-.eyebrow {
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  font-size: .75rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 12px;
-}
-
-h1, h2, h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-  margin: 0;
-}
-
-h1 {
-  font-size: clamp(2.4rem, 8vw, 5rem);
-  line-height: 1.08;
-  color: #fff0ce;
-  text-shadow: 0 5px 25px #422c7955;
-}
-
-h2 {
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  color: var(--gold);
-  text-shadow: 0 4px 18px #001d46;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  color: #a94f7d;
   margin-bottom: 15px;
 }
 
-h3 {
-  color: var(--gold);
-}
-
-.lead {
-  max-width: 680px;
-  line-height: 1.8;
-  color: #e7faff;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  margin: 12px auto 22px;
-}
-
-.subtitle {
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  color: #fff;
+.section-subtitle {
+  text-align: center;
   max-width: 650px;
-  line-height: 1.7;
-  margin: 18px auto;
-}
-
-/* BOTÕES */
-
-.primary {
-  border: 1px solid #ffffff80;
-  border-radius: 999px;
-  padding: 15px 26px;
-  background: linear-gradient(110deg, #ff78b7, #a66be4);
-  color: white;
-  font-weight: 800;
-  font-size: 1rem;
-  box-shadow: 0 9px 25px #00132e66;
-  transition: .25s;
-  margin: 8px;
-}
-
-.primary:hover {
-  transform: translateY(-3px);
-  filter: brightness(1.1);
-}
-
-.back {
-  margin-top: 15px;
-  background: #ffffff16;
-  border: 1px solid #ffffff66;
-  color: white;
-  border-radius: 999px;
-  padding: 11px 19px;
-}
-
-/* CASTELO */
-
-#castle {
-  background:
-    linear-gradient(180deg, #9b8edb55, #172e7066),
-    url('imagens/castelo-rosa.jpeg') center/cover;
-  justify-content: space-between;
-  padding-bottom: 0;
-}
-
-.castle-content {
-  padding-top: 30px;
-  width: 100%;
-}
-
-.castle-image {
-  width: min(430px, 90vw);
-  max-height: 43vh;
-  object-fit: contain;
-  margin: 15px auto;
-  filter: drop-shadow(0 15px 25px #160d4566);
-  animation: float 4s ease-in-out infinite;
-}
-
-.sea-entry {
-  width: calc(100% + 36px);
-  border: none;
-  min-height: 180px;
-  color: white;
-  background: linear-gradient(180deg, #55dfe4, #087eae 55%, #06295a);
-  padding: 45px 15px 35px;
-  box-shadow: 0 -12px 40px #38d7e766;
-  position: relative;
-}
-
-.sea-entry:before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: -10%;
-  width: 120%;
-  height: 45px;
-  background: #54e1e2;
-  border-radius: 50%;
-  animation: wave 4s ease-in-out infinite alternate;
-}
-
-@keyframes wave {
-  to { transform: translateX(5%) translateY(8px); }
-}
-
-.cta {
-  display: inline-block;
-  border: 1px solid #ffffffaa;
-  border-radius: 999px;
-  padding: 15px 25px;
-  background: #ffffff28;
-  font-weight: 800;
+  margin: 0 auto 45px;
+  line-height: 1.8;
   font-size: 1.05rem;
-  position: relative;
 }
 
-/* CENAS */
-
-#mom {
-  background: linear-gradient(145deg, #8056ae, #d68cbd 60%, #f4bfd9);
+.heart {
+  color: #e88ab6;
 }
 
-#mermaid {
-  background: linear-gradient(180deg, #73e5ee, #168fba 50%, #062d67);
+/* ELEMENTOS FLUTUANTES */
+
+.sparkle {
+  position: absolute;
+  color: white;
+  pointer-events: none;
+  animation: twinkle 3s infinite ease-in-out;
 }
 
-#balloons {
-  background: linear-gradient(145deg, #66489b, #9864bd 55%, #e5a6d4);
-}
-
-#treasure {
-  background: radial-gradient(ellipse at 50% 0%, #744aab, #174c86 55%, #041633);
-}
-
-.photo-frame {
-  width: min(350px, 82vw);
-  height: min(440px, 48vh);
-  padding: 7px;
-  border-radius: 28px;
-  background: linear-gradient(135deg, #ffe2a1, #ff8fc7, #5ee7e1);
-  box-shadow: 0 20px 55px #00142f88;
-  margin: 18px auto;
-  animation: float 4s ease-in-out infinite;
-}
-
-.photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 22px;
+@keyframes twinkle {
+  0%, 100% { opacity: .25; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.25); }
 }
 
 @keyframes float {
-  50% {
-    transform: translateY(-10px) rotate(1deg);
-  }
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-20px) rotate(4deg); }
 }
 
-/* CONCHINHAS */
+/* 01 - REINO ENCANTADO */
 
-.shells {
+.hero {
+  min-height: 100svh;
   display: flex;
-  gap: 20px;
+  align-items: center;
   justify-content: center;
-  margin: 20px auto;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(83,42,78,.12), rgba(83,42,78,.08) 45%, #f9dce9 100%),
+    url('img/castelo-rosa.jpeg') center 45% / cover no-repeat;
+  padding: 90px 20px 110px;
 }
 
-.shell {
-  font-size: 2.7rem;
-  border: 1px solid #ffffff80;
-  border-radius: 20px;
-  background: #ffffff20;
-  padding: 12px;
+.hero-content {
+  max-width: 850px;
+  color: white;
+  text-shadow: 0 3px 15px rgba(70,30,60,.4);
+  animation: appear 1.5s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero .little {
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  line-height: 1.8;
+  max-width: 680px;
+  margin: auto;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 15px 32px;
+  border-radius: 40px;
+  background: rgba(255,255,255,.88);
+  color: #a34f7b;
+  text-decoration: none;
+  font-weight: 900;
+  box-shadow: 0 8px 25px #67365330;
   transition: .3s;
+  text-shadow: none;
 }
 
-.shell:hover {
-  transform: translateY(-8px) rotate(-8deg);
+.hero-button:hover {
+  transform: translateY(-5px) scale(1.04);
 }
 
-.shell:disabled {
-  opacity: .7;
-  cursor: default;
-}
-
-.shell-message {
-  min-height: 60px;
-  max-width: 600px;
-  padding: 15px;
-  border-radius: 18px;
-  background: #ffffff20;
-  border: 1px solid #ffffff60;
-  line-height: 1.6;
-}
-
-/* JOGO DOS BALÕES */
-
-.progress {
-  display: flex;
-  gap: 9px;
-  justify-content: center;
-  margin: 22px 0;
-}
-
-.slot {
-  width: 48px;
-  height: 55px;
-  border: 1px dashed var(--gold);
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--gold);
-  background: #ffffff12;
-}
-
-.slot.done {
-  background: linear-gradient(135deg, #ff83bc, #9263d7);
+.scroll-hint {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
   color: white;
-  border: 1px solid var(--gold);
-  animation: pop .4s;
+  font-size: 1.8rem;
+  animation: float 2s infinite;
 }
 
-@keyframes pop {
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+/* 02 - MAMÃE E SOPHIA */
+
+.mom-section {
+  background:
+    radial-gradient(ellipse at top left, #fff9fc 0%, transparent 45%),
+    linear-gradient(125deg, #f8d5e5, #fce9f1 50%, #e9d9f5);
 }
 
-.message {
-  min-height: 65px;
-  width: min(650px, 95%);
-  border: 1px solid #ffffff50;
-  background: #ffffff17;
-  border-radius: 18px;
-  padding: 15px;
+.mom-layout {
   display: grid;
-  place-items: center;
-  color: white;
-  line-height: 1.5;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+  max-width: 1150px;
+  margin: auto;
 }
 
-.balloon-field {
-  width: min(760px, 100%);
+.photo-frame {
+  padding: 12px;
+  background: rgba(255,255,255,.75);
+  border: 2px solid white;
+  border-radius: 28px;
+  box-shadow: 0 18px 50px #9d52732a;
+  transform: rotate(-2deg);
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 470px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.mom-text h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  color: #a64e7c;
+  margin-bottom: 20px;
+}
+
+.mom-text p {
+  line-height: 1.9;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.balloon-area {
+  position: relative;
+  min-height: 300px;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: clamp(10px, 3vw, 25px);
   flex-wrap: wrap;
-  margin: 25px auto;
-  min-height: 175px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .balloon {
-  border: none;
-  background: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: bob 2.7s ease-in-out infinite;
-  padding: 0;
-}
-
-.balloon:nth-child(even) {
-  animation-delay: -1s;
-}
-
-.balloon-body {
-  width: clamp(58px, 13vw, 88px);
-  height: clamp(75px, 16vw, 110px);
-  border-radius: 50% 50% 46% 46%;
-  display: grid;
-  place-items: center;
-  font-size: 1.7rem;
-  color: white;
-  box-shadow: inset -10px -10px 18px #0002,
-              inset 8px 8px 18px #fff7,
-              0 12px 18px #001a3b55;
   position: relative;
+  width: 65px;
+  height: 82px;
+  border-radius: 50% 50% 46% 46%;
+  border: 1px solid #ffffff75;
+  cursor: pointer;
+  box-shadow: inset -8px -8px 15px #00000015,
+              inset 8px 8px 15px #ffffff50,
+              0 8px 15px #8c547222;
+  animation: balloonFloat 3s ease-in-out infinite;
+  transition: transform .2s, opacity .3s;
 }
 
-.balloon-body:after {
-  content: "";
+.balloon::before {
+  content: '';
   position: absolute;
-  bottom: -8px;
-  left: calc(50% - 7px);
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 10px solid var(--balloon);
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  bottom: -4px;
+  left: 29px;
+  transform: rotate(45deg);
 }
 
-.string {
-  height: 35px;
+.balloon::after {
+  content: '';
+  position: absolute;
+  height: 45px;
   width: 1px;
-  background: #ffffffaa;
+  background: #a68c9a;
+  top: 88px;
+  left: 32px;
 }
 
-@keyframes bob {
-  50% { transform: translateY(-13px); }
+.balloon:hover {
+  transform: scale(1.12);
 }
 
 .balloon.popped {
-  animation: balloonPop .3s forwards;
+  animation: pop .3s forwards;
   pointer-events: none;
 }
 
-@keyframes balloonPop {
-  to {
-    transform: scale(1.8);
-    opacity: 0;
-  }
+@keyframes balloonFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -13px; }
 }
 
-/* FOGOS DE ARTIFÍCIO */
-
-.firework-particle {
-  position: fixed;
-  z-index: 100;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: firework-explode 900ms ease-out forwards;
-  box-shadow: 0 0 12px currentColor;
+@keyframes pop {
+  to { transform: scale(1.7); opacity: 0; }
 }
 
-@keyframes firework-explode {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--dx), var(--dy)) scale(0);
-    opacity: 0;
-  }
+/* 03 - SEREIA */
+
+.mermaid-section {
+  background:
+    radial-gradient(circle at 20% 20%, #ffffff80, transparent 25%),
+    linear-gradient(180deg, #e9dafa, #d7eafa 55%, #f9e0ef);
 }
 
-/* PRESENTE */
-
-.final-balloon {
-  display: none;
-  margin: 20px auto;
-  animation: fade .5s ease;
+.mermaid-layout {
+  max-width: 1050px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 45px;
 }
 
-.final-balloon.show {
-  display: block;
-}
-
-.golden {
-  border: 0;
-  border-radius: 50%;
-  width: 145px;
-  height: 160px;
-  background: radial-gradient(circle at 32% 28%, #fff7d7, #ffd36e 52%, #db8d37);
-  color: #754a78;
-  font-weight: 800;
-  font-size: 1.1rem;
-  box-shadow: 0 0 45px #ffdb83aa;
-  animation: pulse 1.8s infinite;
-}
-
-@keyframes pulse {
-  50% {
-    transform: scale(1.07);
-    box-shadow: 0 0 65px #ffdb83;
-  }
-}
-
-/* VÍDEO */
-
-.video-surprise {
-  width: min(850px, 95%);
-  margin: 20px auto;
-  padding: 12px;
-  border: 2px solid var(--gold);
-  border-radius: 25px;
-  background: #ffffff18;
-  box-shadow: 0 0 45px #ffb9df44;
-}
-
-.video-surprise video {
+.mermaid-image {
   width: 100%;
-  max-height: 65vh;
-  aspect-ratio: 16/9;
-  object-fit: contain;
-  background: #000;
-  border-radius: 16px;
-  display: block;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 35px;
+  border: 9px solid #ffffffa8;
+  box-shadow: 0 15px 40px #68558b30;
 }
 
-.merlia-message {
-  max-width: 750px;
-  margin: 15px auto;
-  color: #fff4fc;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+.mermaid-copy h2 {
+  font-size: clamp(2.3rem, 5vw, 3.7rem);
+  color: #8068ad;
+  margin-bottom: 20px;
+}
+
+.mermaid-copy p {
+  line-height: 1.9;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.sea-decoration {
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 12px;
+  margin-top: 30px;
+  animation: float 4s infinite;
+}
+
+/* 04 - CONCHAS */
+
+.shell-section {
+  background: linear-gradient(145deg, #fff2f7, #f8dce9, #f3e5fa);
+}
+
+.shell-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 950px;
+  margin: auto;
+}
+
+.shell {
+  background: linear-gradient(145deg, #fff, #f8d6e7);
+  min-height: 170px;
+  border-radius: 25px 25px 45px 45px;
+  border: 2px solid white;
+  box-shadow: 0 12px 30px #9e638122;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .3s;
+  padding: 20px;
+}
+
+.shell:hover {
+  transform: translateY(-8px) rotate(-2deg);
+}
+
+.shell .emoji {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.shell span:last-child {
+  font-weight: 800;
+  color: #a64e7c;
+}
+
+.shell-message {
+  display: none;
+  margin: 30px auto 0;
+  max-width: 650px;
+  padding: 25px;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  background: #ffffffc9;
+  border: 2px solid white;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px #9e638122;
+}
+
+.shell-message.show {
+  display: block;
+  animation: appear .5s ease;
+}
+
+/* 05 - JOGO */
+
+.game-section {
+  background:
+    radial-gradient(circle at center, #fff9fc, transparent 65%),
+    linear-gradient(160deg, #f9dce9, #e9dafa);
+}
+
+.game-area {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.game-area p {
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.game-balloons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  min-height: 200px;
+}
+
+.game-balloon {
+  position: relative;
+  width: 85px;
+  height: 110px;
+  border-radius: 50% 50% 45% 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.7rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: inset -10px -8px 15px #00000016,
+              inset 8px 8px 12px #ffffff50,
+              0 10px 18px #9c638233;
+  animation: balloonFloat 3s infinite;
+  transition: .25s;
+}
+
+.game-balloon::after {
+  content: '';
+  position: absolute;
+  height: 45px;
+  width: 1px;
+  background: #a68c9a;
+  bottom: -45px;
+  left: 50%;
+}
+
+.game-balloon.popped {
+  animation: pop .3s forwards;
+  pointer-events: none;
+}
+
+.game-button {
+  margin: 30px 8px 0;
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 25px;
+  background: #bd6d99;
+  color: white;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.game-button:hover {
+  transform: translateY(-3px);
+  background: #a94f7d;
+}
+
+.game-result {
+  min-height: 55px;
+  margin-top: 25px;
+  font-size: 1.8rem;
+  color: #a94f7d;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+}
+
+/* FOGOS */
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* 06 - FINAL */
+
+.final-section {
+  background:
+    radial-gradient(circle at 50% 20%, #ffffffc9, transparent 45%),
+    linear-gradient(145deg, #f9dce9, #f3d9f0 55%, #e8def7);
+  padding-bottom: 110px;
+  text-align: center;
+}
+
+.final-section h2 {
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  color: #a64e7c;
+  margin-bottom: 12px;
+}
+
+.final-intro {
+  font-size: 1.1rem;
+  margin-bottom: 35px;
   line-height: 1.8;
 }
 
-.merlia-message strong {
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 1.35em;
+.video-frame {
+  max-width: 1050px;
+  width: 100%;
+  margin: auto;
+  padding: 12px;
+  background: linear-gradient(135deg, #fff, #eab4d0, #fff, #d9c2eb);
+  border: 3px solid white;
+  border-radius: 28px;
+  box-shadow: 0 20px 65px #8f4c742e;
 }
+
+.video-frame video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #241b25;
+  border-radius: 17px;
+}
+
+.final-message {
+  max-width: 750px;
+  margin: 35px auto 0;
+  font-size: 1.15rem;
+  line-height: 1.9;
+}
+
+.final-heart {
+  font-size: 2.5rem;
+  margin-top: 20px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+}
+
+/* RODAPÉ */
 
 footer {
-  color: #c8eaf5;
-  font-size: .85rem;
-  margin-top: 22px;
+  text-align: center;
+  padding: 28px 15px;
+  background: #eac4d8;
+  color: #87516f;
+  font-weight: 800;
 }
 
-/* VARINHA */
+/* RESPONSIVO */
 
-.wand {
-  position: fixed;
-  left: 12px;
-  top: 12px;
-  z-index: 150;
-  border: 1px solid #ffffff66;
-  border-radius: 999px;
-  background: #603b91dd;
-  color: white;
-  padding: 10px 13px;
-}
+@media (max-width: 760px) {
+  section {
+    padding: 75px 6%;
+  }
 
-.sound {
-  position: fixed;
-  right: 12px;
-  top: 12px;
-  z-index: 150;
-  border: 1px solid #ffffff66;
-  border-radius: 999px;
-  background: #031c3dcc;
-  color: white;
-  padding: 10px 13px;
-}
+  .hero {
+    min-height: 90svh;
+    background-position: center;
+  }
 
-/* BOLHAS */
+  .mom-layout,
+  .mermaid-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
 
-.bubble {
-  position: fixed;
-  bottom: -35px;
-  border: 1px solid #ffffff88;
-  border-radius: 50%;
-  background: #c8ffff33;
-  pointer-events: none;
-  z-index: 5;
-  animation: rise linear forwards;
-}
+  .photo-frame img {
+    height: 390px;
+  }
 
-@keyframes rise {
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
+  .mom-text {
+    text-align: center;
+  }
+
+  .mermaid-copy {
+    text-align: center;
+  }
+
+  .shell-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+  }
+
+  .shell {
+    min-height: 145px;
+  }
+
+  .game-balloon {
+    width: 65px;
+    height: 90px;
+    font-size: 1.4rem;
+  }
+
+  .video-frame {
+    padding: 7px;
+    border-radius: 18px;
+  }
+
+  .video-frame video {
+    border-radius: 12px;
   }
 }
 
-.spark {
-  position: fixed;
-  z-index: 200;
-  pointer-events: none;
-  animation: sparkfly .9s ease-out forwards;
-  font-size: 23px;
-}
-
-@keyframes sparkfly {
-  to {
-    transform: translate(var(--dx), -110px) rotate(160deg) scale(.2);
-    opacity: 0;
-  }
-}
-
-@media(max-width:480px) {
-  .scene {
-    padding: 65px 14px 30px;
+@media (max-width: 390px) {
+  .shell-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .castle-image {
-    max-height: 35vh;
-  }
-
-  .photo-frame {
-    height: 38vh;
-  }
-
-  .progress {
-    gap: 5px;
-  }
-
-  .slot {
-    width: 40px;
-    height: 48px;
-  }
-
-  .shells {
-    gap: 10px;
-  }
-}
-
-@media(prefers-reduced-motion:reduce) {
-  *, *:before, *:after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
+  .balloon {
+    width: 55px;
+    height: 72px;
   }
 }
 </style>
@@ -628,835 +615,350 @@ footer {
 
 <body>
 
-<button class="wand" id="wandBtn">🪄 Varinha mágica</button>
-<button class="sound" id="soundBtn">🌊 Som do mar: desligado</button>
+<canvas id="fireworks"></canvas>
 
-<!-- 1. CASTELO -->
+<!-- 01 - ENTRADA DO REINO -->
 
-<section class="scene active" id="castle">
+<section class="hero" id="inicio">
+  <span class="sparkle" style="top:15%;left:12%">✦</span>
+  <span class="sparkle" style="top:30%;right:15%;animation-delay:1s">✧</span>
+  <span class="sparkle" style="top:65%;left:20%;animation-delay:2s">✦</span>
+  <span class="sparkle" style="top:55%;right:12%;animation-delay:.5s">✧</span>
 
-  <div class="stars"></div>
-
-  <div class="castle-content">
-
-    <div class="eyebrow">Uma surpresa feita com amor</div>
-
-    <h1>O Reino Encantado<br>da Sophia</h1>
-
-    <p class="subtitle">
-      Hoje o oceano inteiro está em festa...
-      porque uma princesa muito especial
-      está fazendo aniversário! ✨
+  <div class="hero-content">
+    <div class="little">Um reino preparado com carinho</div>
+    <h1>Princesa Sophia</h1>
+    <p>
+      Dizem que o oceano contou a todos os seres encantados
+      que uma menina muito especial está comemorando seu aniversário...
+      e todos vieram celebrar esse dia tão lindo! 💗
     </p>
-
-    <img
-      class="castle-image"
-      src="imagens/castelo-rosa.jpeg"
-      alt="Castelo encantado da Sophia"
-    >
-
+    <a href="#mamãe" class="hero-button">Descobrir esse mundo encantado ✨</a>
   </div>
 
-  <button class="sea-entry" id="enterSea">
+  <div class="scroll-hint">⌄</div>
+</section>
 
-    <span class="cta">
-      🌊 Mergulhar nessa aventura ↓
-    </span>
+<!-- 02 - MAMÃE E SOPHIA -->
 
-    <div style="margin-top:15px">
-      Toque aqui para descobrir sua surpresa, princesa!
+<section class="mom-section" id="mamãe">
+  <div class="mom-layout">
+
+    <div class="photo-frame">
+      <img src="img/mamae-sophia.jpeg"
+           alt="Uma lembrança especial da mamãe com Sophia">
     </div>
 
-  </button>
+    <div class="mom-text">
+      <h2>Um amor que floresce todos os dias 💗</h2>
+      <p>
+        Existem amores que tornam o mundo mais bonito,
+        abraços que são nosso lugar favorito e momentos
+        que ficam guardados para sempre no coração.
+      </p>
+      <p>
+        E entre tantas coisas lindas da vida, o amor de uma
+        mãe e sua pequena princesa é uma das mais especiais.
+      </p>
+      <p>Um carinho que cresce, floresce e nunca acaba. 🌷</p>
 
+      <div class="balloon-area" id="momBalloons">
+        <button class="balloon" aria-label="Estourar balão rosa"
+          style="background:#f29bbf"></button>
+        <button class="balloon" aria-label="Estourar balão lilás"
+          style="background:#bba4e5;animation-delay:.4s"></button>
+        <button class="balloon" aria-label="Estourar balão branco"
+          style="background:#fff0f6;animation-delay:.8s"></button>
+        <button class="balloon" aria-label="Estourar balão dourado"
+          style="background:#edca82;animation-delay:.2s"></button>
+        <button class="balloon" aria-label="Estourar balão rosa"
+          style="background:#ee8bb3;animation-delay:1s"></button>
+        <button class="balloon" aria-label="Estourar balão lilás"
+          style="background:#c7a8df;animation-delay:.6s"></button>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<!-- 2. MAMÃE E SOPHIA -->
+<!-- 03 - MUNDO DAS SEREIAS -->
 
-<section class="scene" id="mom">
-
-  <div class="stars"></div>
-
-  <div class="eyebrow">
-    O amor que faz qualquer reino ser mágico
-  </div>
-
-  <h2>Um abraço que vale um mundo inteiro 💗</h2>
-
-  <div class="photo-frame">
-    <img
-      src="imagens/mamae-sophia.jpeg"
-      alt="Mamãe e Sophia juntas"
-    >
-  </div>
-
-  <p class="lead">
-    Sophia, existe uma magia muito especial que acompanha
-    você em todos os lugares: o amor da sua mamãe.
-
-    Que vocês continuem de mãos dadas, descobrindo coisas
-    lindas, colecionando abraços e criando lembranças felizes.
-
-    O amor de vocês é maior que qualquer reino encantado! 💞
+<section class="mermaid-section" id="sereia">
+  <h2 class="section-title">Um encanto vindo do fundo do mar 🧜‍♀️</h2>
+  <p class="section-subtitle">
+    Onde existem conchinhas, estrelas-do-mar e sonhos que brilham
+    como as águas de um oceano mágico.
   </p>
 
-  <button class="primary" id="toMermaid">
-    🐚 Vamos conhecer o fundo do mar!
-  </button>
+  <div class="mermaid-layout">
+    <img class="mermaid-image"
+         src="img/sophia-sereia.jpeg"
+         alt="Sophia em seu mundo de sereia">
 
-  <button class="back" data-back="castle">
-    Voltar ao castelo
-  </button>
-
+    <div class="mermaid-copy">
+      <h2>O oceano também celebra você!</h2>
+      <p>
+        As ondas dançam, os peixinhos fazem festa e as sereias
+        espalham estrelinhas pelo mar.
+      </p>
+      <p>
+        Hoje o oceano inteiro tem um motivo especial para sorrir:
+        celebrar a existência de uma pequena princesa chamada Sophia.
+      </p>
+      <div class="sea-decoration">🐚 🫧 ⭐ 🐠</div>
+    </div>
+  </div>
 </section>
 
-<!-- 3. FUNDO DO MAR -->
+<!-- 04 - CONCHAS COM SURPRESAS -->
 
-<section class="scene" id="mermaid">
-
-  <div class="stars"></div>
-
-  <div class="eyebrow">Lá no fundo do mar...</div>
-
-  <h2>Uma aventura de sereia! 🧜‍♀️</h2>
-
-  <div class="photo-frame">
-    <img
-      src="imagens/sophia-sereia.jpeg"
-      alt="Sophia sereia"
-    >
-  </div>
-
-  <p class="lead">
-    Prepare o coração, princesa!
-
-    O oceano está cheio de peixinhos, conchinhas,
-    bolhas mágicas e surpresas esperando por você.
-
-    Que sua vida seja sempre cheia de descobertas,
-    brincadeiras e muitos sorrisos! 🐬
+<section class="shell-section" id="conchas">
+  <h2 class="section-title">Segredinhos do oceano 🐚</h2>
+  <p class="section-subtitle">
+    O mar guardou algumas mensagens especiais.
+    Escolha uma conchinha para descobrir sua surpresa!
   </p>
 
-  <div class="shells">
+  <div class="shell-grid">
 
-    <button class="shell" data-shell="0">🐚</button>
-    <button class="shell" data-shell="1">🪸</button>
-    <button class="shell" data-shell="2">🐚</button>
+    <button class="shell" data-message="Que seu sorriso continue iluminando todos os lugares por onde você passar! 💗">
+      <span class="emoji">🐚</span>
+      <span>Conchinha 1</span>
+    </button>
 
-  </div>
+    <button class="shell" data-message="Que nunca faltem sonhos lindos, brincadeiras e muitas aventuras! 🌈">
+      <span class="emoji">🐚</span>
+      <span>Conchinha 2</span>
+    </button>
 
-  <div class="shell-message" id="shellMessage">
-    Toque nas conchinhas para descobrir mensagens secretas! ✨
-  </div>
+    <button class="shell" data-message="Você é uma estrelinha muito especial neste mundo! ⭐">
+      <span class="emoji">🐚</span>
+      <span>Conchinha 3</span>
+    </button>
 
-  <button class="primary" id="toBalloons">
-    🎈 Vamos brincar com os balões mágicos!
-  </button>
+    <button class="shell" data-message="Que cada novo dia seja cheio de descobertas e felicidade! 🦋">
+      <span class="emoji">🐚</span>
+      <span>Conchinha 4</span>
+    </button>
 
-  <button class="back" data-back="mom">
-    Voltar
-  </button>
+    <button class="shell" data-message="Continue espalhando essa alegria tão bonita que existe em você! 🌸">
+      <span class="emoji">🐚</span>
+      <span>Conchinha 5</span>
+    </button>
 
-</section>
-
-<!-- 4. JOGO DOS BALÕES -->
-
-<section class="scene" id="balloons">
-
-  <div class="stars"></div>
-
-  <div class="eyebrow">Um desafio mágico!</div>
-
-  <h2>Vamos estourar os balões? 🎈</h2>
-
-  <p class="lead">
-    Sophia, existem seis balões encantados!
-
-    Toque em todos eles para descobrir as letras
-    escondidas do seu nome.
-
-    Cada balão vai preparar uma surpresa! 💗
-  </p>
-
-  <div class="progress" id="slots"></div>
-
-  <div class="message" id="balloonMessage">
-    Escolha um balão para começar a magia! ✨
-  </div>
-
-  <div class="balloon-field" id="balloonField"></div>
-
-  <div class="final-balloon" id="finalBalloon">
-
-    <p style="color:#ffe2a1;font-weight:800">
-      PARABÉNS, SOPHIA! 🎆
-      Você conseguiu estourar todos os balões!
-    </p>
-
-    <button class="golden" id="openGift">
-      🎁<br>
-      REVELAR<br>
-      SURPRESA
+    <button class="shell" data-message="Feliz aniversário, Sophia! Que seu mundo seja sempre cheio de amor! 🎂">
+      <span class="emoji">🐚</span>
+      <span>Conchinha 6</span>
     </button>
 
   </div>
 
-  <button class="back" data-back="mermaid">
-    Voltar ao oceano
-  </button>
-
+  <div class="shell-message" id="shellMessage" aria-live="polite"></div>
 </section>
 
-<!-- 5. SURPRESA DA MERLIA -->
+<!-- 05 - JOGO SOPHIA -->
 
-<section class="scene" id="treasure">
+<section class="game-section" id="brincadeira">
+  <h2 class="section-title">Uma chuva de alegria! 🎈</h2>
+  <p class="section-subtitle">
+    Os balões esconderam as letras de um nome muito especial.
+    Estoure todos para revelar a surpresa!
+  </p>
 
-  <div class="stars"></div>
+  <div class="game-area">
+    <p>Prepare os dedinhos e clique nos balões! 💗</p>
 
-  <div class="eyebrow">
-    Uma mensagem especial do fundo do mar
+    <div class="game-balloons" id="gameBalloons"></div>
+
+    <div class="game-result" id="gameResult" aria-live="polite"></div>
+
+    <button class="game-button" id="restartGame">Brincar novamente 🎈</button>
   </div>
+</section>
 
-  <h2>Olá, princesa Sophia! 🧜‍♀️💗</h2>
+<!-- 06 - FINAL COM VÍDEO -->
 
-  <div class="merlia-message">
+<section class="final-section" id="final">
+  <h2>Uma lembrança para guardar no coração 💗</h2>
 
-    <strong>
-      Eu ouvi lá do fundo do oceano...
-    </strong>
+  <p class="final-intro">
+    Porque alguns momentos são tão especiais que merecem
+    ser lembrados para sempre...
+  </p>
 
-    <p>
-      Que uma pessoa muito, muito especial está fazendo
-      aniversário hoje!
-
-      Então eu não poderia deixar esse dia passar sem
-      vir nadando até aqui para desejar muitas
-      felicidadesssssssssssssssssssssssss!
-    </p>
-
-    <p>
-      Preparei uma mensagem especialmente para você.
-
-      Espero que goste dessa surpresa! 🫧
-    </p>
-
-  </div>
-
-  <div class="video-surprise">
-
-    <video
-      id="merliaVideo"
-      controls
-      playsinline
-      preload="metadata"
-    >
-
-      <source src="video-sophia.mp4" type="video/mp4">
-
+  <div class="video-frame">
+    <video controls playsinline preload="metadata"
+           poster="img/castelo-rosa.jpeg">
+      <source src="videos/video-sophia.mp4" type="video/mp4">
       Seu navegador não conseguiu reproduzir este vídeo.
-
     </video>
-
   </div>
 
-  <div class="merlia-message">
-
-    <strong>Feliz 4 aninhos, Sophia! 👑</strong>
-
+  <div class="final-message">
+    <h3>Feliz aniversário, Sophia! 🥰</h3>
     <p>
-      Que sua vida seja sempre cheia de magia,
-      alegria, brincadeiras, descobertas e muitos
-      sonhos realizados.
+      Que sua vida seja sempre um conto de fadas,
+      repleto de amor, saúde, descobertas, brincadeiras
+      e sonhos realizados.
     </p>
-
     <p>
-      Continue espalhando esse sorriso lindo por onde passar.
-
-      Nunca se esqueça de que você é muito amada!
+      Que você nunca perca a magia de enxergar beleza
+      nas pequenas coisas e alegria em cada novo dia.
     </p>
-
-    <strong>
-      Um beijo mágico da Merlia! 💋🧜‍♀️
-    </strong>
-
+    <p><strong>Você é muito especial! ❤️</strong></p>
+    <div class="final-heart">💗</div>
   </div>
-
-  <button class="primary" id="again">
-    ✨ Quero brincar novamente!
-  </button>
-
-  <footer>
-    Uma surpresa feita com muito carinho para Sophia 💗
-  </footer>
-
 </section>
+
+<footer>
+  Feito com muito carinho para a princesa Sophia 💗
+</footer>
 
 <script>
+// BALÕES DECORATIVOS: CLICOU, ESTOUROU!
 
-/* =====================================
-   NAVEGAÇÃO ENTRE AS TELAS
-===================================== */
-
-function showScene(id) {
-
-  document.querySelectorAll(".scene").forEach(scene => {
-    scene.classList.remove("active");
+document.querySelectorAll('#momBalloons .balloon').forEach(balloon => {
+  balloon.addEventListener('click', () => {
+    if (balloon.classList.contains('popped')) return;
+    balloon.classList.add('popped');
+    setTimeout(() => balloon.remove(), 350);
   });
+});
 
-  document.getElementById(id).classList.add("active");
+// CONCHINHAS
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+document.querySelectorAll('.shell').forEach(shell => {
+  shell.addEventListener('click', () => {
+    const message = document.getElementById('shellMessage');
+    message.textContent = shell.dataset.message;
+    message.classList.remove('show');
+    void message.offsetWidth;
+    message.classList.add('show');
   });
-
-}
-
-document.getElementById("enterSea").addEventListener("click", () => {
-  showScene("mom");
 });
 
-document.getElementById("toMermaid").addEventListener("click", () => {
-  startSea();
-  showScene("mermaid");
-});
+// JOGO DAS LETRAS SOPHIA
 
-document.getElementById("toBalloons").addEventListener("click", () => {
-  showScene("balloons");
-});
-
-document.querySelectorAll("[data-back]").forEach(button => {
-
-  button.addEventListener("click", () => {
-    showScene(button.dataset.back);
-  });
-
-});
-
-document.getElementById("openGift").addEventListener("click", () => {
-
-  stopSea();
-
-  showScene("treasure");
-
-  // Não iniciar o vídeo automaticamente:
-  // a criança pode tocar no play quando quiser.
-
-});
-
-document.getElementById("again").addEventListener("click", () => {
-
-  resetGame();
-
-  showScene("castle");
-
-});
-
-
-/* =====================================
-   MENSAGENS DAS CONCHINHAS
-===================================== */
-
-const shellMessages = [
-
-  "Você é uma estrelinha que deixa tudo mais bonito! ✨",
-
-  "Que sua vida seja cheia de brincadeiras, descobertas e abraços! 🐬",
-
-  "A mamãe te ama de um tamanho maior que todo o oceano! 💗"
-
-];
-
-document.querySelectorAll("[data-shell]").forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    const index = Number(button.dataset.shell);
-
-    document.getElementById("shellMessage").textContent =
-      shellMessages[index];
-
-    button.textContent = "💖";
-
-    button.disabled = true;
-
-    popSound();
-
-  });
-
-});
-
-
-/* =====================================
-   JOGO DOS SEIS BALÕES
-===================================== */
-
-const letters = [
-
-  ["S", "S de Sorriso: que o seu nunca perca o brilho! 💗"],
-
-  ["O", "O de Oceano: um mundo inteiro de aventuras espera por você! 🌊"],
-
-  ["P", "P de Princesa: você é única e muito especial! 👑"],
-
-  ["H", "H de Hoje: o dia todinho é para celebrar você! 🎂"],
-
-  ["I", "I de Incrível: assim é você, do jeitinho que é! ✨"],
-
-  ["A", "A de Amor: que nunca falte amor ao seu redor! 💕"]
-
-];
-
+const letters = ['S', 'O', 'P', 'H', 'I', 'A'];
 const colors = [
-  "#ff79b7",
-  "#50c9e4",
-  "#b28af1",
-  "#ffc95c",
-  "#53d9c9",
-  "#ff8c8c"
+  '#ed8eb7',
+  '#a98bd4',
+  '#e7b9d4',
+  '#d9a6e9',
+  '#e5bd79',
+  '#e88fae'
 ];
 
-let popped = 0;
+const gameBalloons = document.getElementById('gameBalloons');
+const gameResult = document.getElementById('gameResult');
+let poppedCount = 0;
 
-function buildGame() {
+function startGame() {
+  gameBalloons.innerHTML = '';
+  gameResult.textContent = '';
+  poppedCount = 0;
 
-  const slots = document.getElementById("slots");
-  const field = document.getElementById("balloonField");
+  const shuffled = [...letters].sort(() => Math.random() - 0.5);
 
-  slots.innerHTML = "";
-  field.innerHTML = "";
+  shuffled.forEach((letter, index) => {
+    const balloon = document.createElement('button');
+    balloon.className = 'game-balloon';
+    balloon.textContent = letter;
+    balloon.style.background = colors[index];
+    balloon.style.animationDelay = `${index * .18}s`;
+    balloon.setAttribute('aria-label', 'Estourar balão com a letra ' + letter);
 
-  letters.forEach((item, index) => {
+    balloon.addEventListener('click', () => {
+      if (balloon.classList.contains('popped')) return;
 
-    // Espaço da letra
+      balloon.classList.add('popped');
+      poppedCount++;
 
-    const slot = document.createElement("div");
+      setTimeout(() => balloon.remove(), 350);
 
-    slot.className = "slot";
-    slot.textContent = "?";
-    slot.id = "slot" + index;
-
-    slots.appendChild(slot);
-
-    // Balão
-
-    const balloon = document.createElement("button");
-
-    balloon.className = "balloon";
-    balloon.type = "button";
-    balloon.setAttribute("aria-label", "Estourar balão " + (index + 1));
-
-    const body = document.createElement("span");
-
-    body.className = "balloon-body";
-
-    body.style.background =
-      `radial-gradient(circle at 30% 25%, #fff9, ${colors[index]} 48%, ${colors[index]})`;
-
-    body.style.setProperty("--balloon", colors[index]);
-
-    body.textContent = "✨";
-
-    const string = document.createElement("span");
-
-    string.className = "string";
-
-    balloon.appendChild(body);
-    balloon.appendChild(string);
-
-    balloon.addEventListener("click", () => {
-
-      if (balloon.classList.contains("popped")) return;
-
-      // Posição do balão para a explosão
-
-      const rect = balloon.getBoundingClientRect();
-
-      fireworks(
-        rect.left + rect.width / 2,
-        rect.top + rect.height / 2
-      );
-
-      // Estourar o balão
-
-      balloon.classList.add("popped");
-
-      // Revelar a letra
-
-      slot.textContent = item[0];
-
-      slot.classList.add("done");
-
-      // Mensagem de cada balão
-
-      document.getElementById("balloonMessage").textContent =
-        item[1];
-
-      popSound();
-
-      popped++;
-
-      // Todos os balões foram estourados
-
-      if (popped === 6) {
-
-        document.getElementById("balloonMessage").textContent =
-          "S O P H I A! PARABÉNS, PRINCESA! 🎆💗";
-
-        document.getElementById("finalBalloon").classList.add("show");
-
-        // Grande show de fogos
-
-        for (let i = 0; i < 12; i++) {
-
-          setTimeout(() => {
-
-            fireworks(
-              30 + Math.random() * (window.innerWidth - 60),
-              60 + Math.random() * (window.innerHeight * .55)
-            );
-
-          }, i * 250);
-
-        }
-
+      if (poppedCount === letters.length) {
+        gameResult.textContent = 'S O P H I A! 💗';
+        launchFireworks();
       }
-
     });
 
-    field.appendChild(balloon);
+    gameBalloons.appendChild(balloon);
+  });
+}
 
+document.getElementById('restartGame').addEventListener('click', startGame);
+startGame();
+
+// FOGOS DE ARTIFÍCIO
+
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let fireworksRunning = false;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth * devicePixelRatio;
+  canvas.height = window.innerHeight * devicePixelRatio;
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function launchFireworks() {
+  const colors = ['#ff8fbd', '#ffe3a1', '#c6a5f5', '#ffffff', '#f4a4d1'];
+
+  for (let burst = 0; burst < 5; burst++) {
+    const x = Math.random() * window.innerWidth;
+    const y = window.innerHeight * (.2 + Math.random() * .35);
+
+    for (let i = 0; i < 45; i++) {
+      const angle = (Math.PI * 2 * i) / 45;
+      const speed = 2 + Math.random() * 4;
+
+      particles.push({
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 80,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+  }
+
+  if (!fireworksRunning) {
+    fireworksRunning = true;
+    animateFireworks();
+  }
+}
+
+function animateFireworks() {
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+  particles = particles.filter(p => p.life > 0);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += .035;
+    p.life--;
+
+    ctx.globalAlpha = Math.max(0, p.life / 80);
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+    ctx.fill();
   });
 
-}
+  ctx.globalAlpha = 1;
 
-
-/* =====================================
-   FOGOS DE ARTIFÍCIO
-===================================== */
-
-function fireworks(x, y) {
-
-  const fireworkColors = [
-
-    "#ff72bd",
-    "#ffe27a",
-    "#75edff",
-    "#c49aff",
-    "#ffffff",
-    "#69ffd5",
-    "#ff9d62"
-
-  ];
-
-  const particles = 38;
-
-  for (let i = 0; i < particles; i++) {
-
-    const particle = document.createElement("span");
-
-    particle.className = "firework-particle";
-
-    const angle = (Math.PI * 2 * i) / particles;
-
-    const distance = 45 + Math.random() * 110;
-
-    const dx = Math.cos(angle) * distance;
-    const dy = Math.sin(angle) * distance;
-
-    const color =
-      fireworkColors[
-        Math.floor(Math.random() * fireworkColors.length)
-      ];
-
-    particle.style.left = x + "px";
-    particle.style.top = y + "px";
-
-    particle.style.background = color;
-    particle.style.color = color;
-
-    particle.style.setProperty("--dx", dx + "px");
-    particle.style.setProperty("--dy", dy + "px");
-
-    document.body.appendChild(particle);
-
-    setTimeout(() => {
-      particle.remove();
-    }, 950);
-
-  }
-
-}
-
-
-/* =====================================
-   REINICIAR JOGO
-===================================== */
-
-function resetGame() {
-
-  popped = 0;
-
-  document.getElementById("finalBalloon").classList.remove("show");
-
-  document.getElementById("balloonMessage").textContent =
-    "Escolha um balão para começar a magia! ✨";
-
-  document.getElementById("shellMessage").textContent =
-    "Toque nas conchinhas para descobrir mensagens secretas! ✨";
-
-  document.querySelectorAll("[data-shell]").forEach((button, index) => {
-
-    button.disabled = false;
-
-    button.textContent = index === 1 ? "🪸" : "🐚";
-
-  });
-
-  buildGame();
-
-}
-
-
-/* =====================================
-   SOM DO MAR
-===================================== */
-
-let audio = null;
-let noise = null;
-let gain = null;
-let lfo = null;
-let seaOn = false;
-
-function startSea() {
-
-  const AudioContext =
-    window.AudioContext || window.webkitAudioContext;
-
-  if (!AudioContext) return;
-
-  if (!audio) {
-    audio = new AudioContext();
-  }
-
-  if (audio.state === "suspended") {
-    audio.resume();
-  }
-
-  if (seaOn) return;
-
-  const size = audio.sampleRate * 2;
-
-  const buffer = audio.createBuffer(
-    1,
-    size,
-    audio.sampleRate
-  );
-
-  const data = buffer.getChannelData(0);
-
-  let last = 0;
-
-  for (let i = 0; i < size; i++) {
-
-    const white = Math.random() * 2 - 1;
-
-    last = .97 * last + .03 * white;
-
-    data[i] = last * 2.8;
-
-  }
-
-  noise = audio.createBufferSource();
-
-  noise.buffer = buffer;
-  noise.loop = true;
-
-  const filter = audio.createBiquadFilter();
-
-  filter.type = "lowpass";
-  filter.frequency.value = 520;
-
-  gain = audio.createGain();
-
-  gain.gain.value = .0001;
-
-  noise.connect(filter);
-  filter.connect(gain);
-  gain.connect(audio.destination);
-
-  // Movimento suave das ondas
-
-  lfo = audio.createOscillator();
-
-  const wobble = audio.createGain();
-
-  lfo.frequency.value = .13;
-  wobble.gain.value = .025;
-
-  lfo.connect(wobble);
-  wobble.connect(gain.gain);
-
-  noise.start();
-  lfo.start();
-
-  gain.gain.setTargetAtTime(
-    .045,
-    audio.currentTime,
-    .8
-  );
-
-  seaOn = true;
-
-  document.getElementById("soundBtn").textContent =
-    "🌊 Som do mar: ligado";
-
-}
-
-function stopSea() {
-
-  if (!gain || !audio) return;
-
-  gain.gain.setTargetAtTime(
-    .0001,
-    audio.currentTime,
-    .5
-  );
-
-  seaOn = false;
-
-  document.getElementById("soundBtn").textContent =
-    "🌊 Som do mar: desligado";
-
-}
-
-document.getElementById("soundBtn").addEventListener("click", () => {
-
-  if (!seaOn) {
-    startSea();
+  if (particles.length > 0) {
+    requestAnimationFrame(animateFireworks);
   } else {
-    stopSea();
+    fireworksRunning = false;
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
   }
-
-});
-
-
-/* =====================================
-   SOM DE ESTOURO DOS BALÕES
-===================================== */
-
-function popSound() {
-
-  if (!audio) return;
-
-  const oscillator = audio.createOscillator();
-
-  const volume = audio.createGain();
-
-  oscillator.type = "sine";
-
-  oscillator.frequency.setValueAtTime(
-    500,
-    audio.currentTime
-  );
-
-  oscillator.frequency.exponentialRampToValueAtTime(
-    1100,
-    audio.currentTime + .09
-  );
-
-  volume.gain.setValueAtTime(
-    .09,
-    audio.currentTime
-  );
-
-  volume.gain.exponentialRampToValueAtTime(
-    .001,
-    audio.currentTime + .13
-  );
-
-  oscillator.connect(volume);
-  volume.connect(audio.destination);
-
-  oscillator.start();
-
-  oscillator.stop(audio.currentTime + .14);
-
 }
-
-
-/* =====================================
-   VARINHA MÁGICA
-===================================== */
-
-document.getElementById("wandBtn").addEventListener("click", () => {
-
-  const icons = ["✨", "⭐", "💗", "🫧", "🌸"];
-
-  for (let i = 0; i < 16; i++) {
-
-    const spark = document.createElement("span");
-
-    spark.className = "spark";
-
-    spark.textContent =
-      icons[Math.floor(Math.random() * icons.length)];
-
-    spark.style.left = Math.random() * 95 + "vw";
-
-    spark.style.top = (15 + Math.random() * 70) + "vh";
-
-    spark.style.setProperty(
-      "--dx",
-      (Math.random() * 150 - 75) + "px"
-    );
-
-    document.body.appendChild(spark);
-
-    setTimeout(() => spark.remove(), 1000);
-
-  }
-
-  if (audio) popSound();
-
-});
-
-
-/* =====================================
-   BOLHAS ANIMADAS
-===================================== */
-
-setInterval(() => {
-
-  if (document.hidden) return;
-
-  const bubble = document.createElement("span");
-
-  bubble.className = "bubble";
-
-  const size = 8 + Math.random() * 20;
-
-  bubble.style.width = size + "px";
-  bubble.style.height = size + "px";
-
-  bubble.style.left = Math.random() * 100 + "vw";
-
-  bubble.style.animationDuration =
-    (5 + Math.random() * 5) + "s";
-
-  document.body.appendChild(bubble);
-
-  setTimeout(() => bubble.remove(), 11000);
-
-}, 850);
-
-
-/* =====================================
-   INICIAR O JOGO
-===================================== */
-
-buildGame();
-
 </script>
 
 </body>
